@@ -1,0 +1,50 @@
+{
+  "selects": [
+    {
+      "i": 0,
+      "class": "",
+      "options": [
+        " | Select a dashboard"
+      ]
+    },
+    {
+      "i": 1,
+      "class": "text-sm rounded-lg px-2 py-1 focus:outline-none cursor-pointer min-w-0 max-w-[9rem] sm:max-w-none",
+      "options": [
+        "0 | All Orgs (Root)"
+      ]
+    }
+  ],
+  "viewAsLabel": [
+    {
+      "tag": "SPAN",
+      "class": "hidden sm:inline text-xs shrink-0",
+      "selectsInside": 0
+    },
+    {
+      "tag": "DIV",
+      "class": "flex items-center gap-1.5 sm:gap-2 rounded-lg px-2 sm:px-3 py-1.5 min-w-0",
+      "selectsInside": 1
+    },
+    {
+      "tag": "DIV",
+      "class": "flex items-center gap-1.5 sm:gap-3 sm:mr-4 w-full sm:w-auto min-w-0",
+      "selectsInside": 1
+    },
+    {
+      "tag": "DIV",
+      "class": "flex items-center gap-2 overflow-hidden sm:overflow-visible -mx-1 px-1 sm:mx-0 sm:px-0 order-2 sm:order-2",
+      "selectsInside": 1
+    },
+    {
+      "tag": "HEADER",
+      "class": "flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b px-3 sm:px-4 py-2",
+      "selectsInside": 2
+    }
+  ],
+  "flexCandidate": [
+    "flex items-center gap-1.5 sm:gap-3 sm:mr-4 w-full sm:w-auto min-w-0"
+  ],
+  "mainCandidates": [],
+  "bodyText": "Select a dashboard\nSelect a dashboard\nDashboard\nDatabase\nView as:\nAll Orgs (Root)\nSA\n\nSelect or create a dashboard\n\nUse the dropdown above to get started\n\n "
+}
