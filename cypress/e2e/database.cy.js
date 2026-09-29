@@ -41,7 +41,8 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get('div.shadow-2xl', { timeout: 60000 }).should('be.visible')
     cy.get('input[placeholder="Schema name"]', { timeout: 60000 }).should('be.visible')
     cy.contains('button:visible', 'Confirm').should('be.visible')
-  })
+     cy.wait(5000)
+})
   it('Verify user can open the Database tab and access the Add Schema dialog create animal schema',()=>{
     cy.get('div[id="root"]').should('be.visible')
     cy.get('[data-dashboard-export-root]', { timeout: 150000 }).should('be.visible').and('not.be.empty')
@@ -61,7 +62,8 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get('input[placeholder="e.g. 2 for FlexiPrint, 3 for Shipment — leave blank for Unassigned"]').type('5')
     cy.contains('button','Confirm').click()
     cy.get('div.shadow-2xl', { timeout: 60000 }).should('be.visible')
-  })
+     cy.wait(5000)
+})
   it('Verify selecting a database schema displays the corresponding schema details ',()=>{
 
     cy.get('div[id="root"]').should('be.visible')
@@ -79,10 +81,52 @@ describe('Lookup page Navigation Test Suite', () => {
         const schemaName = $schemaBtn.text().trim().replace(/^[^\p{L}\p{N}_]+/u, '').trim()
         expect(schemaName, 'schema name').to.not.be.empty
         $schemaBtn.click()
-        cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 })
-          .should('be.visible')
-          .and('contain.text', `Schema: ${schemaName}`) })
-  })
+        cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('be.visible').and('contain.text', `Schema: ${schemaName}`) })
+      cy.wait(5000)
+    })
+    it('Verify selecting a database schema displays the corresponding schema details ',()=>{
 
+    cy.get('div[id="root"]').should('be.visible')
+    cy.get('[data-dashboard-export-root]', { timeout: 150000 }).should('be.visible').and('not.be.empty')
+    cy.contains('button[role="tab"]', 'Dashboard').should('be.visible').and('have.attr', 'aria-selected', 'true')
+    cy.contains('button[role="tab"]', 'Database').should('be.visible').and('have.attr', 'aria-selected', 'false')
+    cy.contains('button[role="tab"]', 'Database').click()
+    cy.contains('button[role="tab"]', 'Database', { timeout: 60000 }).should('have.attr', 'aria-selected', 'true').and('have.attr', 'data-active', 'true')
+    cy.contains('button[role="tab"]', 'Dashboard').should('have.attr', 'aria-selected', 'false')
+    cy.get('main', { timeout: 60000 }).should('be.visible')
+    cy.get('[data-dashboard-export-root]').should('not.exist')
+    cy.get('main').should('contain.text', 'Select a schema to browse its tables.')
+
+    cy.get('button.w-full.text-left', { timeout: 60000 }).should('have.length.greaterThan', 1).eq(1).should('not.be.empty').then(($schemaBtn) => {
+        const schemaName = $schemaBtn.text().trim().replace(/^[^\p{L}\p{N}_]+/u, '').trim()
+        expect(schemaName, 'schema name').to.not.be.empty
+        $schemaBtn.click()
+        cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('be.visible').and('contain.text', `Schema: ${schemaName}`) })
+     cy.wait(5000)
+    })
+    it('Verify user can select a database schema and open the Add Table dialog ',()=>{
+
+    cy.get('div[id="root"]').should('be.visible')
+    cy.get('[data-dashboard-export-root]', { timeout: 150000 }).should('be.visible').and('not.be.empty')
+    cy.contains('button[role="tab"]', 'Dashboard').should('be.visible').and('have.attr', 'aria-selected', 'true')
+    cy.contains('button[role="tab"]', 'Database').should('be.visible').and('have.attr', 'aria-selected', 'false')
+    cy.contains('button[role="tab"]', 'Database').click()
+    cy.contains('button[role="tab"]', 'Database', { timeout: 60000 }).should('have.attr', 'aria-selected', 'true').and('have.attr', 'data-active', 'true')
+    cy.contains('button[role="tab"]', 'Dashboard').should('have.attr', 'aria-selected', 'false')
+    cy.get('main', { timeout: 60000 }).should('be.visible')
+    cy.get('[data-dashboard-export-root]').should('not.exist')
+    cy.get('main').should('contain.text', 'Select a schema to browse its tables.')
+
+    cy.get('button.w-full.text-left', { timeout: 60000 }).should('have.length.greaterThan', 1).eq(1).should('not.be.empty').then(($schemaBtn) => {
+        const schemaName = $schemaBtn.text().trim().replace(/^[^\p{L}\p{N}_]+/u, '').trim()
+        expect(schemaName, 'schema name').to.not.be.empty
+        $schemaBtn.click()
+        cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('be.visible').and('contain.text', `Schema: ${schemaName}`) })
+       cy.contains('button[class="text-xs font-medium px-3 py-1.5 rounded-lg transition-colors"]', '+ Table').click() 
+       cy.get('div.shadow-2xl ').should('be.visible')
+    })
+  
+
+  
   
 })
