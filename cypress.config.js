@@ -5,6 +5,12 @@ module.exports = defineConfig({
   pageLoadTimeout: 120000,
   e2e: {
     setupNodeEvents(on, config) {
+      on("task", {
+        log(message) {
+          console.log(message);
+          return null;
+        },
+      });
       on("before:browser:launch", (browser, launchOptions) => {
         if (browser.family === "chromium") {
           launchOptions.args.push(
