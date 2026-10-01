@@ -290,7 +290,7 @@ describe('Lookup page Navigation Test Suite', () => {
     })
     
    
-    it('Verify Table Creation and Column Addition in Database',()=>{
+    it('Verify Table Creation and Column Addition with Valid Data Types',()=>{
      const tableName = `animal_table_${Date.now()}`
 
     cy.get('div[id="root"]').should('be.visible')
