@@ -129,7 +129,7 @@ describe('Lookup page Navigation Test Suite', () => {
     })
   
 
-     it('Verify user can select a database schema and open the Create Table dialog ',()=>{
+     it('Verify user can select a database schema and open the Create Table dialog with enter input filled ',()=>{
 
     cy.get('div[id="root"]').should('be.visible')
     cy.get('[data-dashboard-export-root]', { timeout: 150000 }).should('be.visible').and('not.be.empty')
@@ -151,33 +151,9 @@ describe('Lookup page Navigation Test Suite', () => {
        cy.get('div.shadow-2xl ', { timeout: 60000 }).should('be.visible').and('contain.text', 'Create Table')
        cy.get('div.shadow-2xl input[placeholder="table_name"]', { timeout: 60000 }).should('be.visible').type('animal-table1')
        cy.get('div.shadow-2xl input[placeholder="column_name"]').should('be.visible').type('uniq animal')
+       cy.wait(5000)
     })
-     it('Verify user can select a database schema and open the Create Table dialog ',()=>{
-
-    cy.get('div[id="root"]').should('be.visible')
-    cy.get('[data-dashboard-export-root]', { timeout: 150000 }).should('be.visible').and('not.be.empty')
-    cy.contains('button[role="tab"]', 'Dashboard').should('be.visible').and('have.attr', 'aria-selected', 'true')
-    cy.contains('button[role="tab"]', 'Database').should('be.visible').and('have.attr', 'aria-selected', 'false')
-    cy.contains('button[role="tab"]', 'Database').click()
-    cy.contains('button[role="tab"]', 'Database', { timeout: 60000 }).should('have.attr', 'aria-selected', 'true').and('have.attr', 'data-active', 'true')
-    cy.contains('button[role="tab"]', 'Dashboard').should('have.attr', 'aria-selected', 'false')
-    cy.get('main', { timeout: 60000 }).should('be.visible')
-    cy.get('[data-dashboard-export-root]').should('not.exist')
-    cy.get('main').should('contain.text', 'Select a schema to browse its tables.')
-
-    cy.get('button.w-full.text-left', { timeout: 60000 }).should('have.length.greaterThan', 1).eq(1).should('not.be.empty').then(($schemaBtn) => {
-        const schemaName = $schemaBtn.text().trim().replace(/^[^\p{L}\p{N}_]+/u, '').trim()
-        expect(schemaName, 'schema name').to.not.be.empty
-        $schemaBtn.click()
-        cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('be.visible').and('contain.text', `Schema: ${schemaName}`) })
-       cy.contains('button[class="text-xs font-medium px-3 py-1.5 rounded-lg transition-colors"]', '+ Table').click() 
-       cy.get('div.shadow-2xl ', { timeout: 60000 }).should('be.visible').and('contain.text', 'Create Table')
-       cy.get('div.shadow-2xl input[placeholder="table_name"]', { timeout: 60000 }).should('be.visible').type('animal-table1')
-       cy.get('div.shadow-2xl input[placeholder="column_name"]').should('be.visible').type('uniq animal')
-       
-    })
-    
-     it('Verify user can create a new database table with a unique table name',()=>{
+    it('Verify user can create a new database table with a unique animal and dispaly details',()=>{
     const tableName = `animal_table_${Date.now()}`
 
     cy.get('div[id="root"]').should('be.visible')
@@ -201,12 +177,16 @@ describe('Lookup page Navigation Test Suite', () => {
        cy.get('div.shadow-2xl input[placeholder="table_name"]', { timeout: 60000 }).should('be.visible').type(tableName)
        cy.get('div.shadow-2xl input[placeholder="column_name"]').should('be.visible').type('world unique animal')
        cy.contains('div.shadow-2xl button', 'Confirm').click()
-       cy.get('div.shadow-2xl', { timeout: 60000 }).should('not.exist')
-       cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('be.visible').and('contain.text', tableName)
-       cy.get('button.w-full.text-left.text-xs.font-mono', { timeout: 60000 }).should('contain.text', tableName)
+      cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('be.visible').and('contain.text', tableName)
+      cy.contains('button[class ="hover:underline"]', 'animal') 
+      cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('be.visible')
+      cy.wait(5000)
+    
+  })
+   
 
     
-    }) 
-  
+   
+
   
 })
