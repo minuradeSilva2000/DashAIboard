@@ -211,11 +211,11 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.contains('button[class ="hover:underline"]', 'animal') 
     cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('be.visible')
     cy.contains('button[class ="hover:underline"]', 'animal').click()
-
+    cy.wait(5000)
   
     
      })
-    it('verify the scema tebe is delete  succesfully',()=>{
+    it('Verify Table Creation and Deletion in the Animal Schema',()=>{
      const tableName = `animal_table_${Date.now()}`
 
     cy.get('div[id="root"]').should('be.visible')
@@ -241,8 +241,39 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get('div.rounded-2xl.shadow-2xl input').should('be.visible').type(`DROP animal.${tableName}`)
     cy.contains('div.rounded-2xl.shadow-2xl button', 'Confirm').click()
     cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('not.contain.text', tableName)
-   })
+    cy.wait(5000)
 
+   })
+  
+    it('Verify Table Creation and rename in the Animal Schema',()=>{
+     const tableName = `animal_table_${Date.now()}`
+
+    cy.get('div[id="root"]').should('be.visible')
+    cy.get('[data-dashboard-export-root]', { timeout: 150000 }).should('be.visible').and('not.be.empty')
+    cy.contains('button[role="tab"]', 'Dashboard').should('be.visible').and('have.attr', 'aria-selected', 'true')
+    cy.contains('button[role="tab"]', 'Database').should('be.visible').and('have.attr', 'aria-selected', 'false')
+    cy.contains('button[role="tab"]', 'Database').click()
+    cy.contains('button[role="tab"]', 'Database', { timeout: 60000 }).should('have.attr', 'aria-selected', 'true').and('have.attr', 'data-active', 'true')
+    cy.contains('button[role="tab"]', 'Dashboard').should('have.attr', 'aria-selected', 'false')
+    cy.get('main', { timeout: 60000 }).should('be.visible')
+    cy.get('[data-dashboard-export-root]').should('not.exist')
+    cy.get('main').should('contain.text', 'Select a schema to browse its tables.')
+    cy.get('button.w-full.text-left', { timeout: 60000 }).should('have.length.greaterThan', 1).eq(1).click()
+    cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('be.visible').and('contain.text', 'Schema: animal')
+    cy.contains('button[class="text-xs font-medium px-3 py-1.5 rounded-lg transition-colors"]', '+ Table').click() 
+    cy.get('div.shadow-2xl ', { timeout: 60000 }).should('be.visible').and('contain.text', 'Create Table')
+    cy.get('div.shadow-2xl input[placeholder="table_name"]', { timeout: 60000 }).should('be.visible').type(tableName)
+    cy.get('div.shadow-2xl input[placeholder="column_name"]').should('be.visible').type('world unique animal')
+    cy.contains('div.shadow-2xl button', 'Confirm').click()
+     cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('be.visible').and('contain.text', tableName)
+     const renamedTable = 'animal_table_1678ghuyK3456'
+     cy.contains('button[class="text-xs px-3 py-1.5 rounded-lg"]', 'Rename Table').click()
+     cy.get('div.rounded-2xl.shadow-2xl', { timeout: 60000 }).should('be.visible').and('contain.text', 'Rename Table')
+     cy.get('div.rounded-2xl.shadow-2xl input[type="text"]', { timeout: 60000 }).should('be.visible').clear().type(renamedTable)
+     cy.contains('div.rounded-2xl.shadow-2xl button', 'Confirm').should('not.be.disabled').click()
+     cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('not.contain.text', tableName).and('contain.text', renamedTable)
+    
+    })
 
 
 
