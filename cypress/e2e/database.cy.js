@@ -206,6 +206,8 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get('div.shadow-2xl ', { timeout: 60000 }).should('be.visible').and('contain.text', 'Create Table')
     cy.get('div.shadow-2xl input[placeholder="table_name"]', { timeout: 60000 }).should('be.visible').type(tableName)
     cy.get('div.shadow-2xl input[placeholder="column_name"]').should('be.visible').type('world unique animal')
+    cy.get('div.rounded-2xl.shadow-2xl select').should('be.visible').select('VARCHAR').should('have.value', 'VARCHAR')
+    cy.get('div.rounded-2xl.shadow-2xl input[type="checkbox"]').eq(1).should('be.visible').check({ force: true })
     cy.contains('div.shadow-2xl button', 'Confirm').click()
     cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('be.visible').and('contain.text', tableName)
     cy.contains('button[class ="hover:underline"]', 'animal') 
@@ -234,12 +236,18 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get('div.shadow-2xl ', { timeout: 60000 }).should('be.visible').and('contain.text', 'Create Table')
     cy.get('div.shadow-2xl input[placeholder="table_name"]', { timeout: 60000 }).should('be.visible').type(tableName)
     cy.get('div.shadow-2xl input[placeholder="column_name"]').should('be.visible').type('world unique animal')
+     cy.get('div.rounded-2xl.shadow-2xl select').should('be.visible').select('VARCHAR').should('have.value', 'VARCHAR')
+    cy.get('div.rounded-2xl.shadow-2xl input[type="checkbox"]').eq(1).should('be.visible').check({ force: true })
     cy.contains('div.shadow-2xl button', 'Confirm').click()
     cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('be.visible').and('contain.text', tableName)
+    cy.intercept('DELETE', '**/api/organizations/*/physical-schema/tables/animal/*').as('dropTable')
+    cy.intercept('GET', '**/api/organizations/*/physical-schema/tables?schemaName=animal').as('schemaTables')
     cy.contains('button[class="text-xs px-3 py-1.5 rounded-lg"]','Delete Table').click()
     cy.get('div.rounded-2xl.shadow-2xl', { timeout: 60000 }).should('be.visible').and('contain.text', 'Drop Table')
     cy.get('div.rounded-2xl.shadow-2xl input').should('be.visible').type(`DROP animal.${tableName}`)
     cy.contains('div.rounded-2xl.shadow-2xl button', 'Confirm').click()
+    cy.wait('@dropTable').its('response.statusCode').should('be.oneOf', [200, 204])
+    cy.wait('@schemaTables')
     cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('not.contain.text', tableName)
     cy.wait(5000)
 
@@ -264,13 +272,19 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get('div.shadow-2xl ', { timeout: 60000 }).should('be.visible').and('contain.text', 'Create Table')
     cy.get('div.shadow-2xl input[placeholder="table_name"]', { timeout: 60000 }).should('be.visible').type(tableName)
     cy.get('div.shadow-2xl input[placeholder="column_name"]').should('be.visible').type('world unique animal')
+     cy.get('div.rounded-2xl.shadow-2xl select').should('be.visible').select('VARCHAR').should('have.value', 'VARCHAR')
+    cy.get('div.rounded-2xl.shadow-2xl input[type="checkbox"]').eq(1).should('be.visible').check({ force: true })
     cy.contains('div.shadow-2xl button', 'Confirm').click()
      cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('be.visible').and('contain.text', tableName)
-     const renamedTable = 'animal_table_1658gvulR3456'
+     const renamedTable = `animal_table_renamed_${Date.now()}`
+     cy.intercept('PUT', '**/api/organizations/*/physical-schema/tables/animal/*/rename').as('renameTable')
+     cy.intercept('GET', '**/api/organizations/*/physical-schema/tables?schemaName=animal').as('schemaTables')
      cy.contains('button[class="text-xs px-3 py-1.5 rounded-lg"]', 'Rename Table').click()
      cy.get('div.rounded-2xl.shadow-2xl', { timeout: 60000 }).should('be.visible').and('contain.text', 'Rename Table')
      cy.get('div.rounded-2xl.shadow-2xl input[type="text"]', { timeout: 60000 }).should('be.visible').clear().type(renamedTable)
      cy.contains('div.rounded-2xl.shadow-2xl button', 'Confirm').should('not.be.disabled').click()
+     cy.wait('@renameTable').its('response.statusCode').should('eq', 200)
+     cy.wait('@schemaTables')
      cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('not.contain.text', tableName).and('contain.text', renamedTable)
      cy.wait(5000)
     })
@@ -299,6 +313,8 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get('div.shadow-2xl ', { timeout: 60000 }).should('be.visible').and('contain.text', 'Create Table')
     cy.get('div.shadow-2xl input[placeholder="table_name"]', { timeout: 60000 }).should('be.visible').type(tableName)
     cy.get('div.shadow-2xl input[placeholder="column_name"]').should('be.visible').type('world unique animal')
+     cy.get('div.rounded-2xl.shadow-2xl select').should('be.visible').select('VARCHAR').should('have.value', 'VARCHAR')
+    cy.get('div.rounded-2xl.shadow-2xl input[type="checkbox"]').eq(1).should('be.visible').check({ force: true })
     cy.contains('div.shadow-2xl button', 'Confirm').click()
     cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('be.visible').and('contain.text', tableName)
     cy.contains('button[class="text-xs font-medium px-3 py-1.5 rounded-lg"]','+ Column').click()
@@ -311,7 +327,7 @@ describe('Lookup page Navigation Test Suite', () => {
     
     
     })
-
+    
  })
    
 
