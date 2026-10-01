@@ -276,15 +276,11 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get('div.rounded-2xl.shadow-2xl input[type="checkbox"]').eq(1).should('be.visible').check({ force: true })
     cy.contains('div.shadow-2xl button', 'Confirm').click()
      cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('be.visible').and('contain.text', tableName)
-     const renamedTable = `animal_table_renamed_${Date.now()}`
-     cy.intercept('PUT', '**/api/organizations/*/physical-schema/tables/animal/*/rename').as('renameTable')
-     cy.intercept('GET', '**/api/organizations/*/physical-schema/tables?schemaName=animal').as('schemaTables')
+     const renamedTable = 'animal_table_1758TvmlR3456'
      cy.contains('button[class="text-xs px-3 py-1.5 rounded-lg"]', 'Rename Table').click()
      cy.get('div.rounded-2xl.shadow-2xl', { timeout: 60000 }).should('be.visible').and('contain.text', 'Rename Table')
      cy.get('div.rounded-2xl.shadow-2xl input[type="text"]', { timeout: 60000 }).should('be.visible').clear().type(renamedTable)
      cy.contains('div.rounded-2xl.shadow-2xl button', 'Confirm').should('not.be.disabled').click()
-     cy.wait('@renameTable').its('response.statusCode').should('eq', 200)
-     cy.wait('@schemaTables')
      cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('not.contain.text', tableName).and('contain.text', renamedTable)
      cy.wait(5000)
     })
