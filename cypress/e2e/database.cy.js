@@ -276,7 +276,7 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get('div.rounded-2xl.shadow-2xl input[type="checkbox"]').eq(1).should('be.visible').check({ force: true })
     cy.contains('div.shadow-2xl button', 'Confirm').click()
      cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('be.visible').and('contain.text', tableName)
-     const renamedTable = 'animal_table_2098tvzlU3456'
+     const renamedTable = 'animal_table_2098tgbim209'
      cy.contains('button[class="text-xs px-3 py-1.5 rounded-lg"]', 'Rename Table').click()
      cy.get('div.rounded-2xl.shadow-2xl', { timeout: 60000 }).should('be.visible').and('contain.text', 'Rename Table')
      cy.get('div.rounded-2xl.shadow-2xl input[type="text"]', { timeout: 60000 }).should('be.visible').clear().type(renamedTable)
@@ -350,6 +350,47 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('be.visible').and('contain.text', 'country_of_origin')
     
     
+    })
+    it('Verify Structure, Data, Statistics, Indexes, and Constraints Sections Display Correct Table Content ',()=>{
+     const tableName = 'ecommerce_order_items'
+     const detailPane = 'div.flex.flex-1.flex-col.overflow-hidden'
+     const detailTab = 'button.text-sm.font-medium.px-3.py-2.border-b-2.whitespace-nowrap.transition-colors'
+
+    cy.get('div[id="root"]').should('be.visible')
+    cy.get('[data-dashboard-export-root]', { timeout: 150000 }).should('be.visible').and('not.be.empty')
+    cy.contains('button[role="tab"]', 'Dashboard').should('be.visible').and('have.attr', 'aria-selected', 'true')
+    cy.contains('button[role="tab"]', 'Database').should('be.visible').and('have.attr', 'aria-selected', 'false')
+    cy.contains('button[role="tab"]', 'Database').click()
+    cy.contains('button[role="tab"]', 'Database', { timeout: 60000 }).should('have.attr', 'aria-selected', 'true').and('have.attr', 'data-active', 'true')
+    cy.contains('button[role="tab"]', 'Dashboard').should('have.attr', 'aria-selected', 'false')
+    cy.get('main', { timeout: 60000 }).should('be.visible')
+    cy.get('[data-dashboard-export-root]').should('not.exist')
+    cy.get('main').should('contain.text', 'Select a schema to browse its tables.')
+    cy.contains('button.w-full.text-left', /\bpublic\b/, { timeout: 60000 }).first().click()
+    cy.get(detailPane, { timeout: 60000 }).should('be.visible').and('contain.text', 'Schema: public')
+    cy.contains('button.w-full.flex.items-center.justify-between', tableName, { timeout: 60000 }).click()
+    cy.get(detailPane, { timeout: 60000 }).should('be.visible').and('contain.text', `public / ${tableName}`).and('contain.text', tableName)
+
+    cy.contains(detailTab, /^Structure$/).click()
+    cy.get(detailPane, { timeout: 60000 }).should('be.visible').and('contain.text', 'order_item_id').and('contain.text', 'product_name')
+
+    cy.contains(detailTab, /^Data$/).click()
+    cy.get(detailPane, { timeout: 60000 }).should('be.visible').and('contain.text', 'order_item_id').and('contain.text', 'order_date')
+
+    cy.contains(detailTab, /^Statistics$/).click()
+    cy.get(detailPane, { timeout: 60000 }).should('be.visible').and('contain.text', 'Approx Row Count').and('contain.text', 'Table Size')
+    cy.contains('button', 'Analyze Table').click()
+    cy.get(detailPane, { timeout: 60000 }).should('be.visible').and('contain.text', 'Approx Row Count')
+    cy.wait(5000)
+
+    cy.contains(detailTab, /^Indexes$/).click()
+    cy.get(detailPane, { timeout: 60000 }).should('be.visible').and('contain.text', 'Index Name').and('contain.text', `${tableName}_pkey`)
+
+    cy.contains(detailTab, /^Constraints$/).click()
+    cy.get(detailPane, { timeout: 60000 }).should('be.visible').and('contain.text', 'Constraint Name').and('contain.text', 'PRIMARY KEY')
+    cy.wait(5000)
+
+
     })
     
  })
