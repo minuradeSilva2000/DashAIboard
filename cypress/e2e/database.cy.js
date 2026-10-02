@@ -58,8 +58,8 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get('div.shadow-2xl', { timeout: 60000 }).should('be.visible')
     cy.get('input[placeholder="Schema name"]', { timeout: 60000 }).should('be.visible')
     cy.contains('button:visible', 'Confirm').should('be.visible')
-    cy.get('input[placeholder="Schema name"]').type('animal-house1')
-    cy.get('input[placeholder="e.g. 2 for FlexiPrint, 3 for Shipment — leave blank for Unassigned"]').type('5')
+    cy.get('input[placeholder="Schema name"]').type('animal-house2')
+    cy.get('input[placeholder="e.g. 2 for FlexiPrint, 3 for Shipment — leave blank for Unassigned"]').type('2')
     cy.contains('button','Confirm').click()
     cy.get('div.shadow-2xl', { timeout: 60000 }).should('be.visible')
      cy.wait(5000)
@@ -276,7 +276,7 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get('div.rounded-2xl.shadow-2xl input[type="checkbox"]').eq(1).should('be.visible').check({ force: true })
     cy.contains('div.shadow-2xl button', 'Confirm').click()
      cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('be.visible').and('contain.text', tableName)
-     const renamedTable = 'animal_table_1758TvmlR3456'
+     const renamedTable = 'animal_table_1778TvzlR3456'
      cy.contains('button[class="text-xs px-3 py-1.5 rounded-lg"]', 'Rename Table').click()
      cy.get('div.rounded-2xl.shadow-2xl', { timeout: 60000 }).should('be.visible').and('contain.text', 'Rename Table')
      cy.get('div.rounded-2xl.shadow-2xl input[type="text"]', { timeout: 60000 }).should('be.visible').clear().type(renamedTable)
