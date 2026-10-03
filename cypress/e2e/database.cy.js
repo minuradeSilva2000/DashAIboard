@@ -276,7 +276,7 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get('div.rounded-2xl.shadow-2xl input[type="checkbox"]').eq(1).should('be.visible').check({ force: true })
     cy.contains('div.shadow-2xl button', 'Confirm').click()
      cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('be.visible').and('contain.text', tableName)
-     const renamedTable = 'animal_table_3098tubIm109'
+     const renamedTable = 'animal_table_3098tubIm222'
      cy.contains('button[class="text-xs px-3 py-1.5 rounded-lg"]', 'Rename Table').click()
      cy.get('div.rounded-2xl.shadow-2xl', { timeout: 60000 }).should('be.visible').and('contain.text', 'Rename Table')
      cy.get('div.rounded-2xl.shadow-2xl input[type="text"]', { timeout: 60000 }).should('be.visible').clear().type(renamedTable)
