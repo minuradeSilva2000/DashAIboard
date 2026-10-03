@@ -276,7 +276,7 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get('div.rounded-2xl.shadow-2xl input[type="checkbox"]').eq(1).should('be.visible').check({ force: true })
     cy.contains('div.shadow-2xl button', 'Confirm').click()
      cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('be.visible').and('contain.text', tableName)
-     const renamedTable = 'animal_table_2098tubim209'
+     const renamedTable = 'animal_table_3098tubIm109'
      cy.contains('button[class="text-xs px-3 py-1.5 rounded-lg"]', 'Rename Table').click()
      cy.get('div.rounded-2xl.shadow-2xl', { timeout: 60000 }).should('be.visible').and('contain.text', 'Rename Table')
      cy.get('div.rounded-2xl.shadow-2xl input[type="text"]', { timeout: 60000 }).should('be.visible').clear().type(renamedTable)
@@ -392,7 +392,7 @@ describe('Lookup page Navigation Test Suite', () => {
 
 
     })
-    it('Verify Table Structure, Data, and Relationships for Ecommerce Order Items ',()=>{
+    it('Verify Table Structure, Data, Relationships, and DDL Functionality ',()=>{
      const tableName = 'ecommerce_order_items'
      const detailPane = 'div.flex.flex-1.flex-col.overflow-hidden'
      const detailTab = 'button.text-sm.font-medium.px-3.py-2.border-b-2.whitespace-nowrap.transition-colors'
@@ -419,9 +419,15 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get(detailPane, { timeout: 60000 }).should('be.visible').and('contain.text', 'order_item_id').and('contain.text', 'order_date')
     cy.wait(5000)
 
-    cy.contains(detailTab,/^Relationships$/).click()
+    cy.contains(detailTab, /^Relationships$/).click()
     cy.get(detailPane, { timeout: 60000 }).should('be.visible').and('contain.text', 'Outgoing').and('contain.text', 'this table references others')
-    
+
+    cy.contains(detailTab, /^DDL$/).click()
+    const ddlActions = 'button[class="text-xs font-medium px-3 py-1.5 rounded-lg"]'
+    cy.get(`${detailPane} ${ddlActions}`, { timeout: 60000 }).should('have.length', 2)
+    cy.contains(`${detailPane} ${ddlActions}`, 'Copy').should('be.visible').and('not.be.disabled').click()
+    cy.wait(5000)
+    cy.contains(`${detailPane} ${ddlActions}`, 'Download').should('be.visible').and('not.be.disabled').click()
   
      })
  })
