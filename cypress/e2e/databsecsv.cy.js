@@ -105,6 +105,8 @@ describe('Lookup page Navigation Test Suite', () => {
      cy.contains('button:visible', 'Import', { timeout: 60000 }).should('be.visible').click() 
      cy.contains('button:visible', 'CSV / Excel', { timeout: 60000 }).should('be.visible').click()
      cy.get('div.rounded-2xl.shadow-2xl.w-full.max-w-3xl', { timeout: 60000 }).should('be.visible').and('contain.text', 'Import CSV / Excel')
-     
+     cy.get('input[type="file"]', { timeout: 60000 }).selectFile('cypress/fixtures/vehicles_dataset.csv')
+
+
     })
 })

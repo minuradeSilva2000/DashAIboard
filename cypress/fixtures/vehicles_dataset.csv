@@ -1,0 +1,26 @@
+Vehicle_ID,Make,Model,Year,Body_Type,Fuel_Type,Transmission,Drivetrain,Engine_Displacement_L,Mileage_Miles,Price_USD,Status
+VEH1001,Toyota,Camry,2023,Sedan,Hybrid,Automatic,FWD,2.5,12500,28500,Available
+VEH1002,Honda,Civic,2022,Sedan,Gasoline,CVT,FWD,2.0,24300,23900,Available
+VEH1003,Ford,F-150,2024,Pickup Truck,Gasoline,Automatic,4WD,3.5,8200,48500,In Stock
+VEH1004,Chevrolet,Silverado 1500,2023,Pickup Truck,Gasoline,Automatic,4WD,5.3,15400,51200,Sold
+VEH1005,BMW,3 Series,2023,Sedan,Gasoline,Automatic,RWD,2.0,11000,44000,Available
+VEH1006,Mercedes-Benz,C-Class,2024,Sedan,Mild Hybrid,Automatic,RWD,2.0,4500,47800,Available
+VEH1007,Audi,A4,2023,Sedan,Gasoline,Automatic,AWD,2.0,13800,42500,Pending
+VEH1008,Tesla,Model 3,2024,Sedan,Electric,Single-Speed,RWD,0.0,6200,38990,Available
+VEH1009,Nissan,Rogue,2022,SUV,Gasoline,CVT,AWD,1.5,28500,26400,Sold
+VEH1010,Hyundai,Tucson,2023,SUV,Hybrid,Automatic,AWD,1.6,14200,31200,Available
+VEH1011,Kia,Sportage,2024,SUV,Hybrid,Automatic,AWD,1.6,5100,32500,In Stock
+VEH1012,Subaru,Outback,2023,Wagon/SUV,Gasoline,CVT,AWD,2.5,19800,29800,Available
+VEH1013,Volkswagen,Golf,2022,Hatchback,Gasoline,Automatic,FWD,2.0,31200,24500,Sold
+VEH1014,Mazda,CX-5,2023,SUV,Gasoline,Automatic,AWD,2.5,16700,28900,Available
+VEH1015,Lexus,RX 350,2024,SUV,Gasoline,Automatic,AWD,2.4,7800,49500,In Stock
+VEH1016,Volvo,XC60,2023,SUV,Plug-in Hybrid,Automatic,AWD,2.0,18500,46200,Available
+VEH1017,Porsche,911 Carrera,2024,Coupe,Gasoline,Dual-Clutch,RWD,3.0,3200,114500,Available
+VEH1018,Jeep,Wrangler,2023,SUV,Gasoline,Automatic,4WD,2.0,14900,39500,Sold
+VEH1019,Land Rover,Defender,2024,SUV,Mild Hybrid,Automatic,4WD,3.0,9100,68000,In Stock
+VEH1020,Toyota,RAV4,2024,SUV,Hybrid,eCVT,AWD,2.5,8400,33500,Available
+VEH1021,Honda,CR-V,2023,SUV,Hybrid,eCVT,AWD,2.0,17300,34200,Available
+VEH1022,Ford,Mustang,2024,Coupe,Gasoline,Manual,RWD,5.0,4900,43500,In Stock
+VEH1023,Tesla,Model Y,2024,SUV,Electric,Single-Speed,AWD,0.0,6800,44990,Available
+VEH1024,BMW,X5,2023,SUV,Mild Hybrid,Automatic,AWD,3.0,19200,61500,Pending
+VEH1025,Hyundai,Elantra,2023,Sedan,Gasoline,CVT,FWD,2.0,21500,21800,Available
