@@ -7,7 +7,7 @@ describe('template spec', () => {
     cy.visit('https://dev.dashaibee.com/login', { waitUntil: 'domcontentloaded' })
 
     cy.get('input[placeholder="Enter username"]').type('admin')
-    cy.get('input[placeholder="Enter password"]').type('WrongPass@999')
+    cy.get('input[placeholder="Enter password"]').type('Admin@2026')
 
     cy.get('button[type="submit"]').click()
 
