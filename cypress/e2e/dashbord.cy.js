@@ -21,7 +21,7 @@ describe('Lookup page Navigation Test Suite', () => {
 
   beforeEach(() => {
     cy.visit('https://dev.dashaibee.com/login', { waitUntil: 'domcontentloaded' })
-    cy.get('input[placeholder="Enter username"]').type('admin')
+    cy.get('input[placeholder="Enter email"]').type('admin@dashai.local')
     cy.get('input[placeholder="Enter password"]').type('Admin@2026!')
     cy.get('button[type="submit"]').click()
 
@@ -86,4 +86,5 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get(AI_ASSISTANT_SEND_ICON, { timeout: 60000 }).should('be.visible')
     cy.clickStable(AI_ASSISTANT_SEND_ICON, { timeout: 60000 })
   })
+  
 })

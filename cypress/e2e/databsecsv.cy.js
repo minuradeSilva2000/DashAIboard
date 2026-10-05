@@ -1,8 +1,8 @@
-describe('Lookup page Navigation Test Suite', () => {
+﻿describe('Lookup page Navigation Test Suite', () => {
 
   beforeEach(() => {
-    cy.visit('https://dev.dashaibee.com/login', { waitUntil: 'domcontentloaded' })
-    cy.get('input[placeholder="Enter username"]').type('admin')
+    cy.visit('https://dev.dashaibee.com/', { waitUntil: 'domcontentloaded' })
+    cy.get('input[placeholder="Enter email"]').type('admin@dashai.local')
     cy.get('input[placeholder="Enter password"]').type('Admin@2026!')
     cy.get('button[type="submit"]').click()
 
@@ -43,7 +43,7 @@ describe('Lookup page Navigation Test Suite', () => {
      cy.wait(5000)
   })
 
-  it('Verify user can open the Database tab and access the Add Schema dialog create vehicle schema',()=>{
+   it('Verify user can open the Database tab and access the Add Schema dialog create vehicle schema',()=>{
     cy.get('div[id="root"]').should('be.visible')
     cy.get('[data-dashboard-export-root]', { timeout: 150000 }).should('be.visible').and('not.be.empty')
     cy.contains('button[role="tab"]', 'Dashboard').should('be.visible').and('have.attr', 'aria-selected', 'true')
@@ -58,8 +58,8 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get('div.shadow-2xl', { timeout: 60000 }).should('be.visible')
     cy.get('input[placeholder="Schema name"]', { timeout: 60000 }).should('be.visible')
     cy.contains('button:visible', 'Confirm').should('be.visible')
-    cy.get('input[placeholder="Schema name"]').type('vehicle')
-    cy.get('input[placeholder="e.g. 2 for FlexiPrint, 3 for Shipment — leave blank for Unassigned"]').type('2')
+    cy.get('input[placeholder="Schema name"]').type('vehicle5')
+    cy.get('input[placeholder="e.g. 2 for FlexiPrint, 3 for Shipment — leave blank for Unassigned"]').type('5')
     cy.contains('button','Confirm').click()
     cy.get('div.shadow-2xl', { timeout: 60000 }).should('be.visible')
      cy.wait(5000)
@@ -77,7 +77,7 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get('[data-dashboard-export-root]').should('not.exist')
     cy.get('main').should('contain.text', 'Select a schema to browse its tables.')
 
-    cy.get('button.w-full.text-left', { timeout: 60000 }).should('have.length.greaterThan', 1).eq(28).should('not.be.empty').then(($schemaBtn) => {
+    cy.get('button.w-full.text-left', { timeout: 60000 }).should('have.length.greaterThan', 1).eq(31).should('not.be.empty').then(($schemaBtn) => {
         const schemaName = $schemaBtn.text().trim().replace(/^[^\p{L}\p{N}_]+/u, '').trim()
         expect(schemaName, 'schema name').to.not.be.empty
         $schemaBtn.click()
@@ -97,7 +97,7 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get('[data-dashboard-export-root]').should('not.exist')
     cy.get('main').should('contain.text', 'Select a schema to browse its tables.')
 
-    cy.get('button.w-full.text-left', { timeout: 60000 }).should('have.length.greaterThan', 1).eq(28).should('not.be.empty').then(($schemaBtn) => {
+    cy.get('button.w-full.text-left', { timeout: 60000 }).should('have.length.greaterThan', 1).eq(31).should('not.be.empty').then(($schemaBtn) => {
         const schemaName = $schemaBtn.text().trim().replace(/^[^\p{L}\p{N}_]+/u, '').trim()
         expect(schemaName, 'schema name').to.not.be.empty
         $schemaBtn.click()
@@ -122,7 +122,7 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get('[data-dashboard-export-root]').should('not.exist')
     cy.get('main').should('contain.text', 'Select a schema to browse its tables.')
 
-    cy.get('button.w-full.text-left', { timeout: 60000 }).should('have.length.greaterThan', 1).eq(28).should('not.be.empty').then(($schemaBtn) => {
+    cy.get('button.w-full.text-left', { timeout: 60000 }).should('have.length.greaterThan', 1).eq(31).should('not.be.empty').then(($schemaBtn) => {
         const schemaName = $schemaBtn.text().trim().replace(/^[^\p{L}\p{N}_]+/u, '').trim()
         expect(schemaName, 'schema name').to.not.be.empty
         $schemaBtn.click()
@@ -148,7 +148,7 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get('[data-dashboard-export-root]').should('not.exist')
     cy.get('main').should('contain.text', 'Select a schema to browse its tables.')
 
-    cy.get('button.w-full.text-left', { timeout: 60000 }).should('have.length.greaterThan', 1).eq(28).should('not.be.empty').then(($schemaBtn) => {
+    cy.get('button.w-full.text-left', { timeout: 60000 }).should('have.length.greaterThan', 1).eq(31).should('not.be.empty').then(($schemaBtn) => {
         const schemaName = $schemaBtn.text().trim().replace(/^[^\p{L}\p{N}_]+/u, '').trim()
         expect(schemaName, 'schema name').to.not.be.empty
         $schemaBtn.click()
@@ -174,7 +174,7 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get('[data-dashboard-export-root]').should('not.exist')
     cy.get('main').should('contain.text', 'Select a schema to browse its tables.')
 
-    cy.get('button.w-full.text-left', { timeout: 60000 }).should('have.length.greaterThan', 1).eq(28).should('not.be.empty').then(($schemaBtn) => {
+    cy.get('button.w-full.text-left', { timeout: 60000 }).should('have.length.greaterThan', 1).eq(31).should('not.be.empty').then(($schemaBtn) => {
         const schemaName = $schemaBtn.text().trim().replace(/^[^\p{L}\p{N}_]+/u, '').trim()
         expect(schemaName, 'schema name').to.not.be.empty
         $schemaBtn.click()
@@ -204,7 +204,7 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get('[data-dashboard-export-root]').should('not.exist')
     cy.get('main').should('contain.text', 'Select a schema to browse its tables.')
 
-    cy.get('button.w-full.text-left', { timeout: 60000 }).should('have.length.greaterThan', 1).eq(28).should('not.be.empty').then(($schemaBtn) => {
+    cy.get('button.w-full.text-left', { timeout: 60000 }).should('have.length.greaterThan', 1).eq(31).should('not.be.empty').then(($schemaBtn) => {
         const schemaName = $schemaBtn.text().trim().replace(/^[^\p{L}\p{N}_]+/u, '').trim()
         expect(schemaName, 'schema name').to.not.be.empty
         $schemaBtn.click()
@@ -236,7 +236,7 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get('[data-dashboard-export-root]').should('not.exist')
     cy.get('main').should('contain.text', 'Select a schema to browse its tables.')
 
-    cy.get('button.w-full.text-left', { timeout: 60000 }).should('have.length.greaterThan', 1).eq(28).should('not.be.empty').then(($schemaBtn) => {
+    cy.get('button.w-full.text-left', { timeout: 60000 }).should('have.length.greaterThan', 1).eq(31).should('not.be.empty').then(($schemaBtn) => {
         const schemaName = $schemaBtn.text().trim().replace(/^[^\p{L}\p{N}_]+/u, '').trim()
         expect(schemaName, 'schema name').to.not.be.empty
         $schemaBtn.click()
@@ -262,6 +262,65 @@ describe('Lookup page Navigation Test Suite', () => {
      cy.get('input[placeholder="Label (e.g. Warehousing Domain)"]', { timeout: 60000 }).should('be.visible').and('not.have.value', '')
      cy.contains('button:visible', ' Create section', { timeout: 60000 }).should('be.visible').and('not.be.disabled').click()
      cy.wait(5000)
-     cy.get('div.fixed.inset-0.z-50.flex.flex-col', { timeout: 60000 }).should('be.visible').and('not.contain.text', 'Create section')
+     cy.get('div.fixed.inset-0.z-50.flex.flex-col', { timeout: 60000 }).should('be.visible').and('contain.text', 'Prompt Manager')
    })
+   it('verify the get  domin prompt in new sction and crete new dashbord and input click chabot and create chart',()=>{
+
+    cy.get('div[id="root"]').should('be.visible')
+    cy.get('[data-dashboard-export-root]', { timeout: 150000 }).should('be.visible').and('not.be.empty')
+    cy.contains('button[role="tab"]', 'Dashboard').should('be.visible').and('have.attr', 'aria-selected', 'true')
+    cy.contains('button[role="tab"]', 'Database').should('be.visible').and('have.attr', 'aria-selected', 'false')
+    cy.contains('button[role="tab"]', 'Database').click()
+    cy.contains('button[role="tab"]', 'Database', { timeout: 60000 }).should('have.attr', 'aria-selected', 'true').and('have.attr', 'data-active', 'true')
+    cy.contains('button[role="tab"]', 'Dashboard').should('have.attr', 'aria-selected', 'false')
+    cy.get('main', { timeout: 60000 }).should('be.visible')
+    cy.get('[data-dashboard-export-root]').should('not.exist')
+    cy.get('main').should('contain.text', 'Select a schema to browse its tables.')
+
+    let schemaName = ''
+    cy.get('button.w-full.text-left', { timeout: 60000 }).should('have.length.greaterThan', 1).eq(31).should('not.be.empty').then(($schemaBtn) => {
+        schemaName = $schemaBtn.text().trim().replace(/^[^\p{L}\p{N}_]+/u, '').trim()
+        expect(schemaName, 'schema name').to.not.be.empty
+        $schemaBtn.click()
+     cy.get('div.flex.flex-1.flex-col.overflow-hidden', { timeout: 60000 }).should('be.visible').and('contain.text', `Schema: ${schemaName}`) })
+     cy.contains('button:visible', 'Import', { timeout: 60000 }).should('be.visible').click() 
+     cy.contains('button:visible', 'CSV / Excel', { timeout: 60000 }).should('be.visible').click()
+     cy.get('div.rounded-2xl.shadow-2xl.w-full.max-w-3xl', { timeout: 60000 }).should('be.visible').and('contain.text', 'Import CSV / Excel')
+     cy.get('input[type="file"]', { timeout: 60000 }).selectFile('cypress/fixtures/vehicles_dataset2.csv')
+     cy.contains('button:visible', 'Upload & Preview', { timeout: 60000 }).should('be.visible').click()
+     cy.contains('button:visible','Next: Configure Columns', { timeout: 60000 }).should('be.visible').click()
+     cy.get('input[type=checkbox]',{timeout:60000}).should('have.length.greaterThan',1).eq(1).check({force:true})
+     cy.wait(5000)
+     cy.contains('button:visible','Next: Choose Target',{timeout:60000}).should('be.visible').click()
+     cy.wait(5000)
+     cy.get('div.rounded-2xl.shadow-2xl.w-full.max-w-3xl', { timeout: 60000 }).find('input[type="text"]').first().clear().type(`cy_csv_${Date.now()}`, { force: true })
+     cy.get('div.rounded-2xl.shadow-2xl.w-full.max-w-3xl', { timeout: 60000 }).contains('button:visible', 'Import', { timeout: 60000 }).should('be.visible').click()
+     cy.contains('button:visible', '+ Add Domain Prompt', { timeout: 60000 }).should('be.visible').click()
+    cy.get('div.fixed.inset-0.z-50.flex.flex-col', { timeout: 60000 }).should('be.visible').and('contain.text', 'Prompt Manager')
+     cy.get('div.fixed.inset-0.z-50.flex.flex-col', { timeout: 60000 }).find('button.flex-1.text-left.text-sm', { timeout: 60000 }).should('have.length.greaterThan', 1)
+     cy.contains('button:visible', ' New section', { timeout: 60000 }).should('be.visible').click()
+     cy.wait(5000)
+     cy.get('div.flex.flex-1.flex-col.gap-3.min-w-0.min-h-0.overflow-hidden', { timeout: 60000 }).should('be.visible')
+     cy.get('input[placeholder="Label (e.g. Warehousing Domain)"]', { timeout: 60000 }).should('be.visible').and('not.have.value', '')
+     cy.contains('button:visible', ' Create section', { timeout: 60000 }).should('be.visible').and('not.be.disabled').click()
+     cy.wait(5000)
+     cy.get('div.fixed.inset-0.z-50.flex.flex-col', { timeout: 60000 }).should('be.visible').and('contain.text', 'Prompt Manager')
+     cy.get('div.fixed.inset-0.z-50.flex.flex-col', { timeout: 60000 }).find('button.flex-1.text-left.text-sm', { timeout: 60000 }).should('have.length.greaterThan', 1)
+     cy.get('div.fixed.inset-0.z-50.flex.flex-col', { timeout: 60000 }).contains('button:visible', /^Back$/, { timeout: 60000 }).should('be.visible').click()
+      cy.get('main', { timeout: 60000 }).should('be.visible')
+      cy.get('[data-dashboard-export-root]').should('not.exist')
+      cy.get('main').should('contain.text', `Schema: ${schemaName}`)
+      cy.contains('button[role="tab"]', 'Dashboard', { timeout: 60000 }).should('be.visible').click()
+      cy.contains('button[role="tab"]', 'Dashboard', { timeout: 60000 }).should('have.attr', 'aria-selected', 'true')
+      cy.get('[data-dashboard-export-root]', { timeout: 60000 }).should('be.visible')
+      cy.get('button.breadcrumb-switcher', { timeout: 60000 }).should('be.visible').click()
+      cy.contains('button[role="menuitem"]:visible', 'New Dashboard', { timeout: 60000 }).should('be.visible').click()
+      cy.get('input[placeholder="Dashboard name"]', { timeout: 60000 }).should('be.visible').and('have.value', '').type('vehiclenew dashbord').and('have.value', 'vehiclenew dashbord')
+      cy.get('input[placeholder="Dashboard name"]', { timeout: 60000 }).type('{enter}')
+      cy.get('input[placeholder="Dashboard name"]', { timeout: 60000 }).should('not.exist')
+      cy.get('button.breadcrumb-switcher', { timeout: 60000 }).should('contain.text', 'vehiclenew dashbord')
+      
+    
+    })
+
 })
