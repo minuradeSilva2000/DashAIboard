@@ -86,11 +86,13 @@ describe('Lookup page Navigation Test Suite', () => {
      cy.get('div.rounded-2xl.shadow-2xl.w-full.max-w-2xl', { timeout: 60000 }).should('be.visible').and('contain.text', 'Import SQL Script')
      cy.get('div.rounded-2xl.shadow-2xl.w-full.max-w-2xl input[type="file"]', { timeout: 60000 }).selectFile('cypress/fixtures/carcount.sql')
      cy.contains('button:visible', 'Upload & Validate', { timeout: 60000 }).should('be.visible').click()
+     cy.get('div.rounded-2xl.shadow-2xl.w-full.max-w-2xl', { timeout: 60000 }).should('be.visible').contains('button', 'Import', { timeout: 60000 }).should('be.visible').click()
      cy.wait(5000)
     
      
 
     })
+    
     
 })
  
