@@ -73,7 +73,7 @@ const openNewDashboard = (attempt = 0) => {
   })
 }
 
-describe('Lookup page Navigation Test Suite', () => {
+describe('Verify End-to-End Dashboard and Chart Creation Workflow', () => {
 
   beforeEach(() => {
     cy.visit('https://dev.dashaibee.com/', { waitUntil: 'domcontentloaded' })
