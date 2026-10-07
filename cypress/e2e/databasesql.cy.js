@@ -118,7 +118,7 @@ describe('Lookup page Navigation Test Suite', () => {
      
 
     })
-       it('Verify User Can Import SQL Script and Open Prompt Manager to Add a Domain Prompt ',()=>{
+    it('Verify SQL Import, Domain Prompt Creation, and New Dashboard Creation',()=>{
 
     cy.get('div[id="root"]').should('be.visible')
     cy.get('[data-dashboard-export-root]', { timeout: 150000 }).should('be.visible').and('not.be.empty')
