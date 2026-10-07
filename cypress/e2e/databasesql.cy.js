@@ -133,7 +133,7 @@ describe('Lookup page Navigation Test Suite', () => {
     cy.get('input[placeholder="Schema name"]', { timeout: 60000 }).should('be.visible')
     cy.contains('button:visible', 'Confirm').should('be.visible')
     cy.get('input[placeholder="Schema name"]').type('cars')
-    cy.get('input[placeholder="e.g. 2 for FlexiPrint, 3 for Shipment — leave blank for Unassigned"]').type('4')
+    cy.get('input[placeholder="e.g. 2 for FlexiPrint, 3 for Shipment — leave blank for Unassigned"]').type('13')
     cy.contains('button','Confirm').click()
     cy.get('div.shadow-2xl', { timeout: 60000 }).should('be.visible')
      cy.wait(5000)
