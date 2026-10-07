@@ -72,7 +72,7 @@ const openNewDashboard = (attempt = 0) => {
   })
 }
 
-describe('Lookup page Navigation Test Suite', () => {
+describe('Verify Database CSV Import and Dashboard Chart Creation Workflow', () => {
 
   beforeEach(() => {
     signInOnce()
