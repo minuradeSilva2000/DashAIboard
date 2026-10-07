@@ -17,7 +17,7 @@ const selectShipmentOrg = () => {
   cy.get('div[data-dashboard-export-root]', { timeout: 150000 }).should('be.visible').and('not.be.empty')
 }
 
-describe('Lookup page Navigation Test Suite', () => {
+describe('Verify Shipment Organization Dashboard and AI Assistant Workflow', () => {
 
   beforeEach(() => {
     cy.visit('https://dev.dashaibee.com/login', { waitUntil: 'domcontentloaded' })
