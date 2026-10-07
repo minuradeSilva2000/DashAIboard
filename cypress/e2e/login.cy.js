@@ -1,4 +1,4 @@
-describe('template spec', () => {
+describe('Login Authentication Validation', () => {
   it('passes', () => {
     cy.visit('https://dev.dashaibee.com/', { waitUntil: 'domcontentloaded' })
   })
