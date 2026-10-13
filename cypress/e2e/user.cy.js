@@ -29,5 +29,12 @@ it('Verify User Registration and Email Verification Workflow',()=>{
    }
    cy.wait(15000)
  })
- 
+ it('Verify Sign In with Email and Password',()=>{
+
+   cy.visit('https://dev.dashaibee.com/', { waitUntil: 'domcontentloaded' })
+   cy.get('input[placeholder="Enter email"]').type('minurasiyoth+test1@gmail.com')
+   cy.get('input[placeholder="Enter password"]').type('minura1234#')
+   cy.contains('button', 'Sign In').click()
+
+ })
 })
