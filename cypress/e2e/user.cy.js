@@ -57,5 +57,16 @@ it('Verify User Registration and Email Verification Workflow',()=>{
 
       cy.visit('https://dev.dashaibee.com/', { waitUntil: 'domcontentloaded' })
     })
+      it('Verify Organization name entry and onboarding continuation', () => {
+
+     cy.get('div[id="root"]').should('be.visible')
+     cy.get('div.onb-card.mt-7.p-5',{timeout:60000}).should('be.visible')
+     cy.get('label[for="onboarding-org-name"]',{timeout:60000}).should('be.visible').and('contain.text','Organization name')
+     cy.get('input[placeholder="e.g. Acme Analytics"]').should('be.visible').type('vehiclehondacar')
+     cy.wait(5000)
+     cy.contains('button.onb-btn-primary','Continue').should('be.visible').click()
+     cy.wait(5000)
+
+  })
   })
 })
