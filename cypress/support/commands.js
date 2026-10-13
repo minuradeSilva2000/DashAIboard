@@ -95,3 +95,22 @@ Cypress.Commands.add(
     })
   },
 )
+
+// Opens the link contained in a verification email.
+//
+// No email-testing backend is configured for this project, so the caller
+// passes the verification URL directly. The optional `subject` is accepted
+// for readability/parity with mail-provider commands but is not required.
+Cypress.Commands.add('clickLinkInEmail', (url, { subject } = {}) => {
+  if (!url || typeof url !== 'string') {
+    throw new Error('clickLinkInEmail: a verification URL string is required')
+  }
+
+  const target = url.trim()
+
+  if (subject) {
+    cy.log(`clickLinkInEmail: opening link from "${subject}"`)
+  }
+
+  cy.visit(target, { waitUntil: 'domcontentloaded' })
+})
