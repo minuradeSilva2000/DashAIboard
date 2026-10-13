@@ -37,4 +37,25 @@ it('Verify User Registration and Email Verification Workflow',()=>{
    cy.contains('button', 'Sign In').click()
 
  })
+   describe('Organization onboarding workflow', () => {
+    beforeEach(() => {
+      cy.visit('https://dev.dashaibee.com/login', { waitUntil: 'domcontentloaded' })
+      cy.get('input[placeholder="Enter email"]').type('minurasiyoth+test1@gmail.com')
+      cy.get('input[placeholder="Enter password"]').type('minura1234#')
+      cy.get('button[type="submit"]').click()
+
+      cy.window().should((win) => {
+        expect(win.localStorage.getItem('token'), 'auth token').to.be.a('string')
+      })
+
+      cy.window().then((win) => {
+        const user = JSON.parse(win.localStorage.getItem('user'))
+        user.onboardingRequired = true
+        win.localStorage.setItem('user', JSON.stringify(user))
+        win.localStorage.removeItem('activeOrgId')
+      })
+
+      cy.visit('https://dev.dashaibee.com/', { waitUntil: 'domcontentloaded' })
+    })
+  })
 })
