@@ -68,5 +68,18 @@ it('Verify User Registration and Email Verification Workflow',()=>{
      cy.wait(5000)
 
   })
+  it('Verify User can create an organization and select the free Plan', () => {
+
+     cy.get('div[id="root"]').should('be.visible')
+     cy.get('div.onb-card.mt-7.p-5',{timeout:60000}).should('be.visible')
+     cy.get('label[for="onboarding-org-name"]',{timeout:60000}).should('be.visible').and('contain.text','Organization name')
+     cy.get('input[placeholder="e.g. Acme Analytics"]').should('be.visible').type('vehiclehondacar')
+     cy.wait(5000)
+     cy.contains('button.onb-btn-primary','Continue').should('be.visible').click()
+     cy.wait(5000)
+     cy.contains('button.onb-btn-primary','Continue with Free').should('be.visible').click()
+     cy.get('div.w-full.flex.flex-col').should('be.visible')
+     cy.wait(5000)
+  })
   })
 })
