@@ -37,7 +37,7 @@ it('Verify User Registration and Email Verification Workflow',()=>{
    cy.contains('button', 'Sign In').click()
 
  })
-   describe('Organization onboarding workflow', () => {
+  describe('Organization onboarding workflow', () => {
     beforeEach(() => {
       cy.visit('https://dev.dashaibee.com/login', { waitUntil: 'domcontentloaded' })
       cy.get('input[placeholder="Enter email"]').type('minurasiyoth+test1@gmail.com')
@@ -57,7 +57,8 @@ it('Verify User Registration and Email Verification Workflow',()=>{
 
       cy.visit('https://dev.dashaibee.com/', { waitUntil: 'domcontentloaded' })
     })
-      it('Verify Organization name entry and onboarding continuation', () => {
+
+  it('Verify user can enter an organization name and continue', () => {
 
      cy.get('div[id="root"]').should('be.visible')
      cy.get('div.onb-card.mt-7.p-5',{timeout:60000}).should('be.visible')
@@ -68,7 +69,7 @@ it('Verify User Registration and Email Verification Workflow',()=>{
      cy.wait(5000)
 
   })
-  it('Verify User can create an organization and select the free Plan', () => {
+   it('Verify user can complete organization setup and continue with Free plan', () => {
 
      cy.get('div[id="root"]').should('be.visible')
      cy.get('div.onb-card.mt-7.p-5',{timeout:60000}).should('be.visible')
@@ -94,12 +95,13 @@ it('Verify User Registration and Email Verification Workflow',()=>{
      cy.get('div.w-full.flex.flex-col').should('be.visible')
      cy.get('form[class="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-3"]',{timeout:60000}).should('be.visible')
      cy.get('input[placeholder="Jane Doe"]').should('be.visible').type('testuser6')
-     cy.get('input[placeholder="jane@company.com"]').should('be.visible').type('minurasiyoth+test1@gmail.com')
+    cy.get('input[placeholder="jane@company.com"]').should('be.visible').type('minurasiyoth+test1@gmail.com')
     cy.get('button.onb-input.onb-select-btn').should('be.visible').eq(0).click()
      cy.contains('button.onb-btn-add.w-full', 'Add teammate').should('be.visible').click()
      cy.wait(5000)
   })
-   it('Verify user can add a teammate and create the workspace successfully', () => {
+
+  it('Verify user can add a teammate and create the workspace successfully', () => {
 
      cy.get('div[id="root"]').should('be.visible')
      cy.get('div.onb-card.mt-7.p-5',{timeout:60000}).should('be.visible')
@@ -120,6 +122,6 @@ it('Verify User Registration and Email Verification Workflow',()=>{
      cy.wait(5000)
      cy.contains('button.onb-btn-primary','Confirm & create workspace').should('be.visible').click()
 
-   })
+  })
   })
 })
