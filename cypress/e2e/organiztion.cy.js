@@ -75,7 +75,7 @@ describe('Verify organiztion test', () => {
     cy.wait(5000)
 
  })
-  it('Verify Database Tab and Create Organization Form and fill form', () => {
+  it('Verify Database Navigation and Organization Form Functionality', () => {
 
     cy.get('div[id="root"]').should('be.visible')
     cy.get('[data-dashboard-export-root]', { timeout: 150000 }).should('be.visible').and('not.be.empty')
@@ -101,7 +101,38 @@ describe('Verify organiztion test', () => {
     cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm input[type="checkbox"]').should('be.visible').check().should('be.checked')
     cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm input[type="text"]').eq(1).should('be.visible').type('Test Description')
     cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm input[type="email"]').should('be.visible').type('test@example.com')
+    cy.wait(5000)
  
+ 
+ 
+  })
+    it('Verify Database Navigation and Organization Form Functionality', () => {
+
+    cy.get('div[id="root"]').should('be.visible')
+    cy.get('[data-dashboard-export-root]', { timeout: 150000 }).should('be.visible').and('not.be.empty')
+    cy.contains('button[role="tab"]', 'Dashboard').should('be.visible').and('have.attr', 'aria-selected', 'true')
+    cy.contains('button[role="tab"]', 'Database').should('be.visible').and('have.attr', 'aria-selected', 'false')
+    cy.contains('button[role="tab"]', 'Database').click()
+    cy.contains('button[role="tab"]', 'Database', { timeout: 60000 }).should('have.attr', 'aria-selected', 'true').and('have.attr', 'data-active', 'true')
+    cy.contains('button[role="tab"]', 'Dashboard').should('have.attr', 'aria-selected', 'false')
+    cy.get('main', { timeout: 60000 }).should('be.visible')
+    cy.get('[data-dashboard-export-root]').should('not.exist')
+    cy.get('main').should('contain.text', 'Select a schema to browse its tables.')
+    cy.get('button[aria-label="User menu"]').filter(':visible').first().click();
+    cy.wait(1000);
+    cy.contains('button', 'Settings').filter(':visible').first().should('be.visible').click();
+    cy.wait(5000)
+    cy.get('nav.flex-1.py-3.overflow-y-auto.overflow-x-hidden', { timeout: 60000 }).should('be.visible').and('contain.text', 'Organization')
+    cy.contains('nav.flex-1.py-3.overflow-y-auto.overflow-x-hidden button', 'Organizations', { timeout: 60000 }).should('be.visible').click()
+    cy.get('main.flex-1.min-h-0.overflow-hidden.flex.flex-col', { timeout: 60000 }).should('be.visible').and('contain.text', 'New Organization')
+    cy.contains('button', 'New Organization').and('be.visible').click()
+    cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm').should('be.visible')
+    cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm input[placeholder="Organization name"]').should('be.visible').type('Test Organization')
+    cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm select').should('have.length', 1).select('Free').should('have.value', '1')
+    cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm input[type="checkbox"]').should('be.visible').check().should('be.checked')
+    cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm input[type="text"]').eq(1).should('be.visible').type('Test Description')
+    cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm input[type="email"]').should('be.visible').type('test@example.com')
+     cy.wait(5000)
  
  
  
