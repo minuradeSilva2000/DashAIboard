@@ -106,7 +106,7 @@ describe('Verify organiztion test', () => {
  
  
   })
-    it('Verify Database Navigation and Organization Form Functionality', () => {
+    it('Verify Successful Organization Creation by Submitting Valid Organization Details', () => {
 
     cy.get('div[id="root"]').should('be.visible')
     cy.get('[data-dashboard-export-root]', { timeout: 150000 }).should('be.visible').and('not.be.empty')
@@ -127,12 +127,12 @@ describe('Verify organiztion test', () => {
     cy.get('main.flex-1.min-h-0.overflow-hidden.flex.flex-col', { timeout: 60000 }).should('be.visible').and('contain.text', 'New Organization')
     cy.contains('button', 'New Organization').and('be.visible').click()
     cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm').should('be.visible')
-    cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm input[placeholder="Organization name"]').should('be.visible').type('Test Organization')
+    cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm input[placeholder="Organization name"]').should('be.visible').type('Test Organizationschool')
     cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm select').should('have.length', 1).select('Free').should('have.value', '1')
     cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm input[type="checkbox"]').should('be.visible').check().should('be.checked')
-    cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm input[type="text"]').eq(1).should('be.visible').type('Test Description')
-    cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm input[type="email"]').should('be.visible').type('test@example.com')
-     cy.wait(5000)
+    cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm input[type="text"]').eq(1).should('be.visible').type('Test Descriptiontype')
+    cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm input[type="email"]').should('be.visible').type('test234@example.com')
+    cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm button[type="submit"]').should('be.visible').click()
  
  
  
