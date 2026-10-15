@@ -72,6 +72,7 @@ describe('Verify organiztion test', () => {
     cy.get('main.flex-1.min-h-0.overflow-hidden.flex.flex-col', { timeout: 60000 }).should('be.visible').and('contain.text', 'New Organization')
     cy.contains('button', 'New Organization').and('be.visible').click()
     cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm').should('be.visible')
+    cy.wait(5000)
 
  })
 })
