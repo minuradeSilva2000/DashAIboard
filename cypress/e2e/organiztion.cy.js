@@ -161,6 +161,7 @@ describe('Verify organiztion test', () => {
     cy.wait(5000)
    cy.get('button[title="Expand details"]', { timeout: 60000 }).should('be.visible').click()
    cy.get('button[title="Collapse details"]', { timeout: 60000 }).should('be.visible')
+   cy.wait(5000)
     
 
 
