@@ -131,7 +131,7 @@ describe('Verify organiztion test', () => {
     cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm select').should('have.length', 1).select('Free').should('have.value', '1')
     cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm input[type="checkbox"]').should('be.visible').check().should('be.checked')
     cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm input[type="text"]').eq(1).should('be.visible').type('Test Descriptiontype')
-    cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm input[type="email"]').should('be.visible').type('test234@example.com')
+    cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm input[type="email"]').should('be.visible').type('test235@example.com')
     cy.get('form.rounded-xl.p-4.space-y-4.border.shadow-sm button[type="submit"]').should('be.visible').click()
     cy.wait(5000)
  
