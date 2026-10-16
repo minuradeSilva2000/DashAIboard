@@ -212,7 +212,7 @@ describe('Verify organiztion test', () => {
     cy.contains('div.flex.flex-col.sm\\:flex-row.sm\\:items-center.sm\\:justify-between.gap-2', 'AAPAN Test', { timeout: 60000 }).should('be.visible').and('contain.text', 'AAPAN Test')
     cy.contains('div.flex.flex-col.sm\\:flex-row.sm\\:items-center.sm\\:justify-between.gap-2', 'AAPAN Test').find('button[title="Edit plan and limits"]', { timeout: 60000 }).should('have.length', 1).and('be.visible').click()
     cy.get('form.rounded-xl.p-4.space-y-3.border.shadow-sm').should('be.visible')
-    
+    cy.wait(5000)
 
   })
     
