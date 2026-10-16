@@ -188,7 +188,7 @@ describe('Verify organiztion test', () => {
     cy.get('select.w-full.sm\\:w-auto.text-sm.rounded-lg.px-3.py-2').should('be.visible').select('Pro').should('have.value', '2')
    cy.get('button[title="Expand details"]', { timeout: 60000 }).filter(':visible').first().should('be.visible').click()
     cy.get('button[title="Collapse details"]', { timeout: 60000 }).should('be.visible')
-    
+    cy.wait(5000)
   })
    it('Verify Organization Management and Edit Plan and Limits Workflow', () => {
 
@@ -215,5 +215,5 @@ describe('Verify organiztion test', () => {
     
 
   })
-
+    
 })
