@@ -242,6 +242,7 @@ describe('Verify organiztion test', () => {
     cy.get('form.rounded-xl.p-4.space-y-3.border.shadow-sm', { timeout: 60000 }).should('not.exist')
     cy.contains('div.flex.flex-col.sm\\:flex-row.sm\\:items-center.sm\\:justify-between.gap-2', 'AAPAN Test', { timeout: 60000 }).should('contain.text', 'Plan: Pro')
     cy.contains('Organization updated', { timeout: 60000 }).should('be.visible')
+    cy.wait(5000)
 
   })
    it('Verify Organization Deactivation Workflow suceesfully', () => {
@@ -264,7 +265,7 @@ describe('Verify organiztion test', () => {
     cy.contains('nav.flex-1.py-3.overflow-y-auto.overflow-x-hidden button', 'Organizations', { timeout: 60000 }).should('be.visible').click()
     cy.get('main.flex-1.min-h-0.overflow-hidden.flex.flex-col', { timeout: 60000 }).should('be.visible').and('contain.text', 'New Organization')
     cy.contains('div.flex.flex-col.sm\\:flex-row.sm\\:items-center.sm\\:justify-between.gap-2', 'Alex Sales', { timeout: 60000 }).should('be.visible').and('contain.text', 'Alex Sales') 
-      cy.contains('div.flex.flex-col.sm\\:flex-row.sm\\:items-center.sm\\:justify-between.gap-2', 'Alex Sales').find('button[title="Click to deactivate"]', { timeout: 60000 }).should('have.length', 1).and('be.visible').click()
+    cy.contains('div.flex.flex-col.sm\\:flex-row.sm\\:items-center.sm\\:justify-between.gap-2', 'Alex Sales').find('button[title="Click to deactivate"]', { timeout: 60000 }).should('have.length', 1).and('be.visible').click()
    
 
 
